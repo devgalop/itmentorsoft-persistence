@@ -6,8 +6,8 @@ from itmentorsoft_persistence.dto.assessment import (
     AssessmentQuiz,
     AssessmentSummary,
 )
-from itmentorsoft_persistence.dto.classification_service import ClassificationResult
-from itmentorsoft_persistence.dto.qualifier_service import (
+from itmentorsoft_persistence.dto.classification_result import ClassificationResult
+from itmentorsoft_persistence.dto.qualifier_result import (
     QualifierResult,
     TopicResult,
 )
