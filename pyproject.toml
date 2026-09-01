@@ -1,8 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "itmentorsoft-persistence"
+version = "1.0.0"
+description = "Centralized data access library"
+requires-python = ">=3.12"
+dependencies = [
+    "sqlalchemy>=2.0",
+    "alembic>=1.19",
+    "asyncpg>=0.31",
+    "pydantic>=2.13",
+    "python-dotenv>=1.2",
+    "aiofiles>=25.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 
 [tool.ruff]
 extend-exclude = [
-    "./src/infrastructure/database/postgresql/models/__init__.py",
+    "./src/itmentorsoft_persistence/infrastructure/database/postgresql/models/__init__.py",
     "./alembic/env.py",
 ]

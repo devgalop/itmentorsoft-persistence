@@ -1,4 +1,4 @@
-import asyncio
+﻿import asyncio
 from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import pool
@@ -6,10 +6,10 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 # Import Base from the PostgreSQL infrastructure layer for autogenerate support.
-from src.postgresql_database_session import (
+from itmentorsoft_persistence.postgresql_database_session import (
     Base,
 )
-from src.models import (
+from itmentorsoft_persistence.models import (
     AssessmentEntity,
     AssessmentAnswerEntity,
     AssessmentQuizEntity,
@@ -25,7 +25,7 @@ from src.models import (
     RecoveryTokenEntity,
     RefreshTokenEntity,
 )
-from src.postgresql_database_session import DATABASE_URL
+from itmentorsoft_persistence.postgresql_database_session import DATABASE_URL
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
