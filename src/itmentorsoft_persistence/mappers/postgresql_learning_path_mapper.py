@@ -1,6 +1,7 @@
 ﻿from itmentorsoft_persistence.dto.learning_path import (
     LearningPath,
 )
+import uuid
 from itmentorsoft_persistence.models.postgresql_learning_path_model import (
     LearningPathContentEntity,
     LearningPathEntity,
@@ -25,7 +26,7 @@ class PostgresLearningPathMapper:
     ) -> list[LearningPathContentEntity]:
         return [
             LearningPathContentEntity(
-                id=content.content_id,
+                id=uuid.uuid4().hex,
                 learning_path_id=model.path_id,
                 content_id=content.content_id,
                 is_completed=False,

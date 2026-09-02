@@ -4,6 +4,7 @@ from .postgresql_assessment_model import (
     AssessmentQuizEntity,
     AssessmentQualificationEntity,
     ClassificationResultEntity,
+    TopicResultEntity
 )
 from .postgresql_content_rating import ContentRating
 from .postgresql_question_model import (
@@ -20,3 +21,4 @@ from .postgresql_learning_path_model import (
     LearningPathEntity,
     LearningPathContentEntity,
 )
+from .postgresql_user_refresh_token_model import RefreshTokenEntity

@@ -1,4 +1,4 @@
-﻿from itmentorsoft_persistence.dto.refresh_token_repository import (
+﻿from itmentorsoft_persistence.repositories import (
     RefreshTokenData,
     RefreshTokenInfo,
 )
