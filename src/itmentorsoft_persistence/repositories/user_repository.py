@@ -8,7 +8,7 @@ from itmentorsoft_persistence.dto.user import (
     User,
     UserResponse,
 )
-from itmentorsoft_persistence.dto.user_access import UserAccessTries
+from itmentorsoft_persistence.dto.user_access import IncrementLoginTryCounterRequest, UserAccessTries
 from itmentorsoft_persistence.dto.user_otp import UserOTP, UserOTPRequest
 
 
@@ -170,25 +170,23 @@ class UserRepository(ABC):
         pass
     
     @abstractmethod
-    async def get_login_try_counter(self, user_id: str) -> UserAccessTries:
+    async def get_login_try_counter(self, user_id: str) -> UserAccessTries | None:
         """Get the login try counter for a user.
 
         Args:
             user_id (str): The ID of the user to search for.
 
         Returns:
-            UserAccessTries: The user access tries object containing the number of login attempts, block time, and blocked status for the user.
+            UserAccessTries | None: The user access tries object containing the number of login attempts, block time, and blocked status for the user, or None if not found.
         """
         pass
 
     @abstractmethod
-    async def increment_login_try_counter(self, user_id: str, increment: int = 1, should_block: bool = False):
+    async def increment_login_try_counter(self, request: IncrementLoginTryCounterRequest):
         """Increment the login try counter for a user.
 
         Args:
-            user_id (str): The ID of the user whose login try counter is to be incremented.
-            increment (int, optional): The amount by which to increment the login try counter. Defaults to 1.
-            should_block (bool, optional): Whether the user should be blocked if the counter exceeds the limit. Defaults to False.
+            request (IncrementLoginTryCounterRequest): The request object containing the user ID, counter, and block status information.
 
         """
         pass
@@ -199,6 +197,16 @@ class UserRepository(ABC):
 
         Args:
             user_id (str): The ID of the user whose login try counter is to be reset.
+
+        """
+        pass
+    
+    @abstractmethod
+    async def unblock_temporarily_blocked_user(self, user_id: str):
+        """Unblock a temporarily blocked user.
+
+        Args:
+            user_id (str): The ID of the user to be unblocked.
 
         """
         pass
