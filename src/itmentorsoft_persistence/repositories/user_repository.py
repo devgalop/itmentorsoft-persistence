@@ -8,6 +8,8 @@ from itmentorsoft_persistence.dto.user import (
     User,
     UserResponse,
 )
+from itmentorsoft_persistence.dto.user_access import UserAccessTries
+from itmentorsoft_persistence.dto.user_otp import UserOTP, UserOTPRequest
 
 
 class UserRepository(ABC):
@@ -142,5 +144,61 @@ class UserRepository(ABC):
             user_id (str): The ID of the user whose username is to be updated.
             new_username (str): The new username to be set for the user.
             name (str): The new name to be set for the user.
+        """
+        pass
+    
+    @abstractmethod
+    async def get_user_otp(self, user_id: str) -> UserOTP | None:
+        """Get the OTP details for a user.
+
+        Args:
+            user_id (str): The ID of the user to search for.
+
+        Returns:
+            UserOTP: The user OTP object if found, otherwise None.
+        """
+        pass
+    
+    @abstractmethod
+    async def save_user_otp(self, user_otp: UserOTPRequest):
+        """Save the OTP details for a user.
+
+        Args:
+            user_otp (UserOTPRequest): The user OTP request object to be saved in the database.
+
+        """
+        pass
+    
+    @abstractmethod
+    async def get_login_try_counter(self, user_id: str) -> UserAccessTries:
+        """Get the login try counter for a user.
+
+        Args:
+            user_id (str): The ID of the user to search for.
+
+        Returns:
+            UserAccessTries: The user access tries object containing the number of login attempts, block time, and blocked status for the user.
+        """
+        pass
+
+    @abstractmethod
+    async def increment_login_try_counter(self, user_id: str, increment: int = 1, should_block: bool = False):
+        """Increment the login try counter for a user.
+
+        Args:
+            user_id (str): The ID of the user whose login try counter is to be incremented.
+            increment (int, optional): The amount by which to increment the login try counter. Defaults to 1.
+            should_block (bool, optional): Whether the user should be blocked if the counter exceeds the limit. Defaults to False.
+
+        """
+        pass
+    
+    @abstractmethod
+    async def reset_login_try_counter(self, user_id: str):
+        """Reset the login try counter for a user.
+
+        Args:
+            user_id (str): The ID of the user whose login try counter is to be reset.
+
         """
         pass

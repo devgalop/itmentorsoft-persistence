@@ -1,5 +1,5 @@
 ﻿import asyncio
-from itmentorsoft_persistence.postgresql_database_session import (
+from postgresql_database_session import (
     ensure_database_exists,
     engine,
     Base,

@@ -22,3 +22,7 @@ from .postgresql_learning_path_model import (
     LearningPathContentEntity,
 )
 from .postgresql_user_refresh_token_model import RefreshTokenEntity
+from .postgresql_user_access_model import UserAccessEntity
+from .postgresql_user_otp_model import UserOTPEntity
+from .postgresql_user_access_model import UserAccessEntity
+from .postgresql_user_otp_model import UserOTPEntity
