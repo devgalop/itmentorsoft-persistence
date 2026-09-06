@@ -8,6 +8,8 @@ from itmentorsoft_persistence.dto.user import (
     User,
     UserResponse,
 )
+from itmentorsoft_persistence.dto.user_access import IncrementLoginTryCounterRequest, UserAccessTries
+from itmentorsoft_persistence.dto.user_otp import UserOTP, UserOTPRequest
 
 
 class UserRepository(ABC):
@@ -142,5 +144,69 @@ class UserRepository(ABC):
             user_id (str): The ID of the user whose username is to be updated.
             new_username (str): The new username to be set for the user.
             name (str): The new name to be set for the user.
+        """
+        pass
+    
+    @abstractmethod
+    async def get_user_otp(self, user_id: str) -> UserOTP | None:
+        """Get the OTP details for a user.
+
+        Args:
+            user_id (str): The ID of the user to search for.
+
+        Returns:
+            UserOTP: The user OTP object if found, otherwise None.
+        """
+        pass
+    
+    @abstractmethod
+    async def save_user_otp(self, user_otp: UserOTPRequest):
+        """Save the OTP details for a user.
+
+        Args:
+            user_otp (UserOTPRequest): The user OTP request object to be saved in the database.
+
+        """
+        pass
+    
+    @abstractmethod
+    async def get_login_try_counter(self, user_id: str) -> UserAccessTries | None:
+        """Get the login try counter for a user.
+
+        Args:
+            user_id (str): The ID of the user to search for.
+
+        Returns:
+            UserAccessTries | None: The user access tries object containing the number of login attempts, block time, and blocked status for the user, or None if not found.
+        """
+        pass
+
+    @abstractmethod
+    async def increment_login_try_counter(self, request: IncrementLoginTryCounterRequest):
+        """Increment the login try counter for a user.
+
+        Args:
+            request (IncrementLoginTryCounterRequest): The request object containing the user ID, counter, and block status information.
+
+        """
+        pass
+    
+    @abstractmethod
+    async def reset_login_try_counter(self, user_id: str):
+        """Reset the login try counter for a user.
+
+        Args:
+            user_id (str): The ID of the user whose login try counter is to be reset.
+
+        """
+        pass
+    
+    @abstractmethod
+    async def unblock_temporarily_blocked_user(self, user_id: str):
+        """Unblock a temporarily blocked user.
+
+        Args:
+            user_id (str): The ID of the user to be unblocked.
+
         """
         pass

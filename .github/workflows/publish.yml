@@ -1,4 +1,4 @@
-name: Publish Package to GHCR
+name: Publish Package
 
 on:
   push:

@@ -24,6 +24,8 @@ from itmentorsoft_persistence.models import (
     RoleEntity,
     RecoveryTokenEntity,
     RefreshTokenEntity,
+    UserAccessEntity,
+    UserOTPEntity
 )
 from itmentorsoft_persistence.postgresql_database_session import DATABASE_URL
 

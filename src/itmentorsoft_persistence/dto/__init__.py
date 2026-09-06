@@ -62,6 +62,8 @@ from .user import (
     UserStatus,
 )
 from .user_recovery_token import RecoveryTokenInfo, UserRecoveryTokenResponse
+from .user_access import UserAccessTries, IncrementLoginTryCounterRequest
+from .user_otp import UserOTP, UserOTPRequest, UserOTPStatus
 
 __all__ = [
     # assign_role
@@ -133,4 +135,11 @@ __all__ = [
     # user_recovery_token
     "RecoveryTokenInfo",
     "UserRecoveryTokenResponse",
+    # user_access
+    "UserAccessTries",
+    "IncrementLoginTryCounterRequest",
+    # user_otp
+    "UserOTP",
+    "UserOTPRequest",
+    "UserOTPStatus",
 ]
