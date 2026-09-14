@@ -1,4 +1,3 @@
-
 from enum import Enum
 
 
@@ -8,9 +7,11 @@ class UserOTPRequest:
         self.otp = otp
         self.expiration_time = expiration_time
 
+
 class UserOTPStatus(Enum):
     PENDING = "pending"
     EXPIRED = "expired"
+
 
 class UserOTP:
     def __init__(self, user_id: str, otp: str, status: str, expiration_time: float):
@@ -18,5 +19,3 @@ class UserOTP:
         self.otp = otp
         self.status = status
         self.expiration_time = expiration_time
-        
-    

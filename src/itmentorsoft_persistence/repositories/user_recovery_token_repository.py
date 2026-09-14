@@ -1,10 +1,9 @@
 from abc import ABC, abstractmethod
-import uuid
 
-from itmentorsoft_persistence.dto.user_recovery_token import RecoveryTokenInfo, UserRecoveryTokenResponse
-
-
-
+from itmentorsoft_persistence.dto.user_recovery_token import (
+    RecoveryTokenInfo,
+    UserRecoveryTokenResponse,
+)
 
 
 class UserRecoveryTokenRepository(ABC):

@@ -8,7 +8,10 @@ from itmentorsoft_persistence.dto.user import (
     User,
     UserResponse,
 )
-from itmentorsoft_persistence.dto.user_access import IncrementLoginTryCounterRequest, UserAccessTries
+from itmentorsoft_persistence.dto.user_access import (
+    IncrementLoginTryCounterRequest,
+    UserAccessTries,
+)
 from itmentorsoft_persistence.dto.user_otp import UserOTP, UserOTPRequest
 
 
@@ -146,7 +149,7 @@ class UserRepository(ABC):
             name (str): The new name to be set for the user.
         """
         pass
-    
+
     @abstractmethod
     async def get_user_otp(self, user_id: str) -> UserOTP | None:
         """Get the OTP details for a user.
@@ -158,7 +161,7 @@ class UserRepository(ABC):
             UserOTP: The user OTP object if found, otherwise None.
         """
         pass
-    
+
     @abstractmethod
     async def save_user_otp(self, user_otp: UserOTPRequest):
         """Save the OTP details for a user.
@@ -168,7 +171,7 @@ class UserRepository(ABC):
 
         """
         pass
-    
+
     @abstractmethod
     async def get_login_try_counter(self, user_id: str) -> UserAccessTries | None:
         """Get the login try counter for a user.
@@ -182,7 +185,9 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
-    async def increment_login_try_counter(self, request: IncrementLoginTryCounterRequest):
+    async def increment_login_try_counter(
+        self, request: IncrementLoginTryCounterRequest
+    ):
         """Increment the login try counter for a user.
 
         Args:
@@ -190,7 +195,7 @@ class UserRepository(ABC):
 
         """
         pass
-    
+
     @abstractmethod
     async def reset_login_try_counter(self, user_id: str):
         """Reset the login try counter for a user.
@@ -200,13 +205,23 @@ class UserRepository(ABC):
 
         """
         pass
-    
+
     @abstractmethod
     async def unblock_temporarily_blocked_user(self, user_id: str):
         """Unblock a temporarily blocked user.
 
         Args:
             user_id (str): The ID of the user to be unblocked.
+
+        """
+        pass
+
+    @abstractmethod
+    async def revoke_otp_codes(self, user_id: str):
+        """Revoke all OTP codes for a user.
+
+        Args:
+            user_id (str): The ID of the user whose OTP codes are to be revoked.
 
         """
         pass

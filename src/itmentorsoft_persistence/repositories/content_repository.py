@@ -18,6 +18,7 @@ from itmentorsoft_persistence.dto.content import (
     ResourceContentResponse,
 )
 
+
 class ResourceContentRepository(ABC):
 
     @abstractmethod

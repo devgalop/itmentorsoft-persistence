@@ -8,15 +8,20 @@ from sqlalchemy.orm import DeclarativeBase
 
 load_dotenv()
 
+
 def _get_mandatory_env_variable(var_name: str) -> str:
     """Get a mandatory environment variable, raise an error if not found."""
     value = os.getenv(var_name)
     if value is None:
-        raise EnvironmentError(f"Mandatory environment variable '{var_name}' not found.")
+        raise EnvironmentError(
+            f"Mandatory environment variable '{var_name}' not found."
+        )
     return value
 
+
 DATABASE_URL = _get_mandatory_env_variable("DATABASE_URL")
-    
+
+
 def _get_database_name(url: str) -> str:
     """Extract database name from connection URL."""
     parsed = urlparse(url)

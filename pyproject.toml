@@ -25,5 +25,6 @@ pythonpath = ["."]
 [tool.ruff]
 extend-exclude = [
     "./src/itmentorsoft_persistence/infrastructure/database/postgresql/models/__init__.py",
+    "./src/itmentorsoft_persistence/models/__init__.py",
     "./alembic/env.py",
 ]

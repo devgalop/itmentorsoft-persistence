@@ -2,6 +2,7 @@ from enum import Enum
 import uuid
 from pydantic import BaseModel
 
+
 class ContentCategory(Enum):
     """Content category
 
@@ -204,30 +205,33 @@ class ResourceContentRating:
         self.title = title
         self.summary = summary
         self.rating = rating
-        
+
 
 class GetContentsByCategoryPaginationRequest(BaseModel):
     category: str
     page: int = 0
     page_size: int = 10
-    
-    
+
+
 class GetContentsByCategoryTopicPaginationRequest(BaseModel):
     category: str
     topic: str
     page: int = 0
     page_size: int = 10
-    
+
+
 class GetContentsByTitlePaginationRequest(BaseModel):
     title: str
     page: int = 0
     page_size: int = 10
-    
+
+
 class GetContentsByTopicPaginationRequest(BaseModel):
     topic: str
     page: int = 0
     page_size: int = 10
-    
+
+
 class UpdateResourceContentRequest(BaseModel):
     title: str
     description: str
