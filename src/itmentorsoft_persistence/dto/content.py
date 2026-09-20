@@ -207,6 +207,27 @@ class ResourceContentRating:
         self.rating = rating
 
 
+class ResourceContentRatingByStudent:
+    """Represents a rating for educational resource content by a student
+
+    Args:
+        content_id (str): The ID of the content.
+        title (str): The title of the content.
+        summary (str): The summary of the content.
+        rating (float): The rating of the content.
+        student_id (str): The ID of the student who rated the content.
+    """
+
+    def __init__(
+        self, content_id: str, title: str, summary: str, rating: float, student_id: str
+    ):
+        self.content_id = content_id
+        self.title = title
+        self.summary = summary
+        self.rating = rating
+        self.student_id = student_id
+
+
 class GetContentsByCategoryPaginationRequest(BaseModel):
     category: str
     page: int = 0

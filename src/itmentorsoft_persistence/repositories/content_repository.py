@@ -5,6 +5,7 @@ from itmentorsoft_persistence.dto.content import (
     GetContentsByCategoryTopicPaginationRequest,
     GetContentsByTitlePaginationRequest,
     GetContentsByTopicPaginationRequest,
+    ResourceContentRatingByStudent,
     UpdateResourceContentRequest,
 )
 
@@ -144,5 +145,39 @@ class ResourceContentRepository(ABC):
             order (str): The order of the ratings, either "desc" for descending or "asc" for ascending
         Returns:
             list[ResourceContentRating]: A list of the top educational resource contents based on rating for the specified topic
+        """
+        pass
+
+    @abstractmethod
+    async def get_ratings_by_user(
+        self, user_id: str
+    ) -> list[ResourceContentRatingByStudent]:
+        """Get all ratings given by a specific user for educational resource contents
+        Args:
+            user_id (str): The ID of the user
+        Returns:
+            list[ResourceContentRatingByStudent]: A list of ratings given by the user for the specified content
+        """
+        pass
+
+    @abstractmethod
+    async def get_rating_content_by_user(
+        self, user_id: str, content_id: str
+    ) -> ResourceContentRatingByStudent | None:
+        """Get the rating of a specific educational resource content by a specific user
+        Args:
+            user_id (str): The ID of the user
+            content_id (str): The ID of the educational resource content
+        Returns:
+            ResourceContentRatingByStudent | None: The rating given by the user for the specified content, or None if no rating exists
+        """
+        pass
+
+    @abstractmethod
+    async def update_rating(self, request: RateContent):
+        """Update rating for specific content by a user
+
+        Args:
+            request (RateContent): The request containing the rating information for the specific content
         """
         pass

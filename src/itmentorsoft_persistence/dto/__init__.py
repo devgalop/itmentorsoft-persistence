@@ -63,6 +63,7 @@ from .user import (
 )
 from .user_recovery_token import RecoveryTokenInfo, UserRecoveryTokenResponse
 from .user_access import UserAccessTries, IncrementLoginTryCounterRequest
+from .content import ResourceContentRatingByStudent
 from .user_otp import UserOTP, UserOTPRequest, UserOTPStatus
 
 __all__ = [
@@ -142,4 +143,5 @@ __all__ = [
     "UserOTP",
     "UserOTPRequest",
     "UserOTPStatus",
+    "ResourceContentRatingByStudent",
 ]
