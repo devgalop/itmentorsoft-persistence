@@ -21,3 +21,5 @@ class QuestionDetails(BaseModel):
     difficulty: str
     classification: str
     version: int
+    previous_version_id: str = ""
+    root_version_id: str = ""

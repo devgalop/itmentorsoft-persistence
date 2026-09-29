@@ -62,6 +62,8 @@ class Question:
         difficulty: QuestionDifficulty = QuestionDifficulty.EASY,
         classification: str = "",
         version: int = 1,
+        previous_version_id: str = "",
+        root_version_id: str = "",
     ):
         self.question_id = uuid.uuid4().hex
         self.text_to_evaluate = text_to_evaluate
@@ -77,6 +79,24 @@ class Question:
         self.difficulty = difficulty
         self.classification = classification
         self.version = version
+        self.previous_version_id = previous_version_id
+        self.root_version_id = root_version_id
+
+    def update_previous_version_id(self, new_previous_version_id: str):
+        """Update the previous version ID of the question
+
+        Args:
+            new_previous_version_id (str): The new previous version ID to be assigned to the question.
+        """
+        self.previous_version_id = new_previous_version_id
+
+    def update_root_version_id(self, new_root_version_id: str):
+        """Update the root version ID of the question
+
+        Args:
+            new_root_version_id (str): The new root version ID to be assigned to the question.
+        """
+        self.root_version_id = new_root_version_id
 
     def update_status(self, new_status: QuestionStatus):
         """Update the status of the question
@@ -233,6 +253,38 @@ class QuestionBuilder:
         self._difficulty = QuestionDifficulty.EASY
         self._classification = ""
         self._version = 1
+        self._previous_version_id = ""
+        self._root_version_id = ""
+
+    def set_previous_version_id(
+        self, previous_version_id: str | None
+    ) -> "QuestionBuilder":
+        """Save the identifier of previous version of the question.
+
+        Args:
+            previous_version_id (str | None): The identifier of the previous version of the question.
+
+        Returns:
+            QuestionBuilder: The current instance of the QuestionBuilder.
+        """
+        if previous_version_id is None:
+            return self
+        self._previous_version_id = previous_version_id
+        return self
+
+    def set_root_version_id(self, root_version_id: str | None) -> "QuestionBuilder":
+        """Save the identifier of the first version of the question.
+
+        Args:
+            root_version_id (str | None): The identifier of the first version of the question.
+
+        Returns:
+            QuestionBuilder: The current instance of the QuestionBuilder.
+        """
+        if root_version_id is None:
+            return self
+        self._root_version_id = root_version_id
+        return self
 
     def set_text_to_evaluate(self, text_to_evaluate: str) -> "QuestionBuilder":
         """Set the text to evaluate of the question
@@ -408,6 +460,10 @@ class QuestionBuilder:
             difficulty=self._difficulty,
             classification=self._classification,
             version=self._version,
+            previous_version_id=(
+                self._previous_version_id if self._previous_version_id else ""
+            ),
+            root_version_id=self._root_version_id if self._root_version_id else "",
         )
         if self.question_id:
             question.update_question_id(self.question_id)

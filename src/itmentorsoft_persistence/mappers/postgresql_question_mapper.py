@@ -56,6 +56,12 @@ class PostgresQuestionMapper:
             difficulty=QuestionDifficulty(question.difficulty),
             classification=question.classification,
             version=question.version,
+            previous_version_id=(
+                question.previous_version_id if question.previous_version_id else ""
+            ),
+            root_version_id=(
+                question.root_version_id if question.root_version_id else ""
+            ),
         )
         model.update_question_id(question.id)
         return model
@@ -88,6 +94,12 @@ class PostgresQuestionMapper:
             difficulty=question.difficulty,
             classification=question.classification,
             version=question.version,
+            previous_version_id=(
+                question.previous_version_id if question.previous_version_id else ""
+            ),
+            root_version_id=(
+                question.root_version_id if question.root_version_id else ""
+            ),
         )
         return model
 
@@ -132,6 +144,8 @@ class PostgresQuestionMapper:
             difficulty=question.difficulty.value,
             classification=question.classification,
             version=question.version,
+            previous_version_id=question.previous_version_id,
+            root_version_id=question.root_version_id,
         )
 
     @staticmethod
