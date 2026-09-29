@@ -14,7 +14,7 @@ from itmentorsoft_persistence.postgresql_database_session import (
 class QuestionEntity(Base):
     __tablename__ = "questions"
 
-    id: Mapped[str] = mapped_column(String, primary_key=True, index=True)
+    id: Mapped[str] = mapped_column(String, primary_key=True, index=True, unique=True)
     text: Mapped[str] = mapped_column(String, index=True)
     concept: Mapped[str] = mapped_column(String)
     definition: Mapped[str] = mapped_column(String)
@@ -22,8 +22,8 @@ class QuestionEntity(Base):
     correct_sample: Mapped[str] = mapped_column(String)
     wrong_sample: Mapped[str] = mapped_column(String)
     difficulty: Mapped[str] = mapped_column(String)
-    classification: Mapped[str] = mapped_column(String)
-    version: Mapped[int] = mapped_column(Integer)
+    classification: Mapped[str] = mapped_column(String, index=True)
+    version: Mapped[int] = mapped_column(Integer, index=True)
     common_misconceptions: Mapped[str] = mapped_column(
         String
     )  # Store misconceptions as a pipe-separated string
@@ -39,6 +39,8 @@ class QuestionEntity(Base):
         "QuestionReviewEntity", back_populates="question"
     )
     is_enabled: Mapped[bool] = mapped_column(default=True)
+    previous_version_id: Mapped[str] = mapped_column(String, nullable=True)
+    root_version_id: Mapped[str] = mapped_column(String, nullable=True)
 
 
 class QuestionRubricScoreEntity(Base):

@@ -144,4 +144,5 @@ __all__ = [
     "UserOTPRequest",
     "UserOTPStatus",
     "ResourceContentRatingByStudent",
+    "QuestionDetails",
 ]

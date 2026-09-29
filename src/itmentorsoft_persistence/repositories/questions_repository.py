@@ -6,6 +6,7 @@ from itmentorsoft_persistence.dto.question import (
     Question,
     QuestionReview,
 )
+from itmentorsoft_persistence.dto.question_details import QuestionDetails
 
 
 class QuestionRepository(ABC):
@@ -156,5 +157,34 @@ class QuestionRepository(ABC):
 
         Returns:
             bool: True if the update was successful, False otherwise.
+        """
+        pass
+
+    @abstractmethod
+    async def get_all_versions_by_question(
+        self, question_id: str
+    ) -> list[QuestionDetails]:
+        """Obtain all versions of a specific question
+
+        Args:
+            question_id (str): The ID of the question to retrieve versions for.
+
+        Returns:
+            list[QuestionDetails]: A list of all versions of the specified question.
+        """
+        pass
+
+    @abstractmethod
+    async def get_latest_versions_all_questions(
+        self, page: int, page_size: int
+    ) -> PaginatedQuestionsResult:
+        """Obtain the latest versions of all questions
+
+        Args:
+            page (int): The page number to retrieve.
+            page_size (int): The number of questions per page.
+
+        Returns:
+            PaginatedQuestionsResult: The paginated result containing the latest versions of all questions.
         """
         pass

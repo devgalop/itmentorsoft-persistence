@@ -1,7 +1,7 @@
 """Ajusta tipo de dato para identificador de usuarios
 
 Revision ID: b565fdffbc88
-Revises: 7fd6d605a314
+Revises: 95fd08243f33
 Create Date: 2026-09-05 19:59:59.902796
 
 """
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = "b565fdffbc88"
-down_revision: Union[str, Sequence[str], None] = "7fd6d605a314"
+down_revision: Union[str, Sequence[str], None] = "95fd08243f33"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
