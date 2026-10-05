@@ -19,7 +19,16 @@ def _get_mandatory_env_variable(var_name: str) -> str:
     return value
 
 
-DATABASE_URL = _get_mandatory_env_variable("DATABASE_URL")
+def _get_database_connection_url() -> str:
+    """Construct the database connection URL from individual environment variables."""
+    user = _get_mandatory_env_variable("DATABASE_USER")
+    password = _get_mandatory_env_variable("DATABASE_PASSWORD")
+    host = _get_mandatory_env_variable("DATABASE_HOST")
+    db_name = _get_mandatory_env_variable("DATABASE_NAME")
+    return f"postgresql+asyncpg://{user}:{password}@{host}/{db_name}"
+
+
+DATABASE_URL = _get_database_connection_url()
 
 
 def _get_database_name(url: str) -> str:
