@@ -22,6 +22,18 @@ class LearningPathRepository(ABC):
         pass
 
     @abstractmethod
+    async def is_learning_path_created(self, user_id: str) -> bool:
+        """Check if a learning path has been created for a user
+
+        Args:
+            user_id (str): The ID of the user whose learning path creation status is to be checked
+
+        Returns:
+            bool: True if a learning path has been created for the user, False otherwise
+        """
+        pass
+
+    @abstractmethod
     async def save_learning_path(self, learning_path: LearningPath):
         """Save a learning path for a user
 
@@ -58,5 +70,30 @@ class LearningPathRepository(ABC):
             path_id (str): The ID of the learning path whose progress is to be retrieved
         Returns:
             LearningPathProgressResponse: The progress of the learning path for the user, or None if not found
+        """
+        pass
+
+    @abstractmethod
+    async def get_learning_path_by_id(self, path_id: str) -> LearningPath | None:
+        """Get a learning path by its ID
+
+        Args:
+            path_id (str): The ID of the learning path to be retrieved
+
+        Returns:
+            LearningPath | None: The learning path with the specified ID, or None if not found
+        """
+        pass
+
+    @abstractmethod
+    async def is_path_associated_with_user(self, path_id: str, user_id: str) -> bool:
+        """Check if a learning path is associated with a user
+
+        Args:
+            path_id (str): The ID of the learning path
+            user_id (str): The ID of the user
+
+        Returns:
+            bool: True if the learning path is associated with the user, False otherwise
         """
         pass
