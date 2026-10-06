@@ -14,20 +14,27 @@ class LearningPath:
         topic: str,
         is_completed: bool,
         contents: list[ContentByTopic],
+        progress: float = 0.0,
     ):
         self.path_id = path_id
         self.user_id = user_id
         self.topic = topic
         self.is_completed = is_completed
         self.contents = contents
+        self.progress = progress
 
 
 class LearningPathResponse:
     def __init__(
-        self, is_success: bool, message: str, recommendation: list[LearningPath]
+        self,
+        is_success: bool,
+        message: str,
+        path_id: str,
+        recommendation: list[LearningPath],
     ):
         self.is_success = is_success
         self.message = message
+        self.path_id = path_id
         self.recommendation = recommendation
 
 
