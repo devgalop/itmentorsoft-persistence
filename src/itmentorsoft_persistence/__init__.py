@@ -136,6 +136,7 @@ from .repositories import (
     TotalActiveUsers,
     UserRecoveryTokenRepository,
     UserRepository,
+    UserNotificationRepository,
 )
 
 __all__ = [
@@ -247,4 +248,5 @@ __all__ = [
     "TotalActiveUsers",
     "UserRecoveryTokenRepository",
     "UserRepository",
+    "UserNotificationRepository",
 ]
