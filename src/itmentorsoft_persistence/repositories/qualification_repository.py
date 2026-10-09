@@ -40,13 +40,16 @@ class QualificationRepository(ABC):
         pass
 
     @abstractmethod
-    async def is_already_qualified(self, assessment_id: str) -> bool:
+    async def is_already_qualified(
+        self, assessment_id: str, question_id: str | None = None
+    ) -> bool:
         """Check if an assessment has already been qualified.
 
         Args:
             assessment_id (str): The ID of the assessment to check.
+            question_id (str): The ID of the question to check. None if checking the entire assessment.
 
         Returns:
-            bool: True if the assessment has already been qualified, False otherwise.
+            bool: True if the question of the assessment has already been qualified, False otherwise.
         """
         pass
