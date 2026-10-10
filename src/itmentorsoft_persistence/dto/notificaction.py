@@ -1,6 +1,18 @@
 from datetime import datetime
 
 
+class InsertNotificationRequest:
+    def __init__(
+        self,
+        user_id: str,
+        subject: str,
+        message: str,
+    ):
+        self.user_id = user_id
+        self.subject = subject
+        self.message = message
+
+
 class Notification:
     def __init__(
         self,

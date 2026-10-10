@@ -1,4 +1,9 @@
-from itmentorsoft_persistence.dto.notificaction import Notification
+from datetime import datetime
+
+from itmentorsoft_persistence.dto.notificaction import (
+    Notification,
+    InsertNotificationRequest,
+)
 from itmentorsoft_persistence.models.postgresql_notification_model import (
     NotificationEntity,
 )
@@ -6,15 +11,14 @@ from itmentorsoft_persistence.models.postgresql_notification_model import (
 
 class NotificationMapper:
     @staticmethod
-    def to_entity(notification: Notification) -> NotificationEntity:
+    def to_entity(notification: InsertNotificationRequest) -> NotificationEntity:
         return NotificationEntity(
-            id=notification.id,
             user_id=notification.user_id,
             subject=notification.subject,
             message=notification.message,
-            read=notification.read,
-            created_at=notification.created_at,
-            updated_at=notification.updated_at,
+            read=False,
+            created_at=datetime.now(),
+            updated_at=datetime.now(),
         )
 
     @staticmethod
