@@ -65,7 +65,7 @@ from .user_recovery_token import RecoveryTokenInfo, UserRecoveryTokenResponse
 from .user_access import UserAccessTries, IncrementLoginTryCounterRequest
 from .content import ResourceContentRatingByStudent
 from .user_otp import UserOTP, UserOTPRequest, UserOTPStatus
-from .notificaction import Notification
+from .notificaction import Notification, InsertNotificationRequest
 
 __all__ = [
     # assign_role
@@ -147,4 +147,5 @@ __all__ = [
     "ResourceContentRatingByStudent",
     "QuestionDetails",
     "Notification",
+    "InsertNotificationRequest",
 ]

@@ -14,6 +14,7 @@ from .postgresql_role_mapper import PostgresRoleMapper
 from .postgresql_user_mapper import PostgresUserMapper
 from .postgresql_user_recovery_token_mapper import PostgresRecoveryTokenMapper
 from .postgresql_user_refresh_token_mapper import PostgresRefreshTokenMapper
+from .postgresql_notification_mapper import NotificationMapper
 
 __all__ = [
     "PostgresAssessmentMapper",
@@ -30,4 +31,5 @@ __all__ = [
     "PostgresUserMapper",
     "PostgresRecoveryTokenMapper",
     "PostgresRefreshTokenMapper",
+    "NotificationMapper",
 ]

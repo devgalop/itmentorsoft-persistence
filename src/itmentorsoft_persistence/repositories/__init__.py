@@ -16,6 +16,7 @@ from .user_repository import UserRepository
 from .qualification_repository import QualificationRepository
 from .classification_repository import ClassificationRepository
 from .user_notification_repository import UserNotificationRepository
+from .notification_repository import NotificationRepository
 
 __all__ = [
     "AssessmentRepository",
@@ -34,4 +35,5 @@ __all__ = [
     "QualificationRepository",
     "ClassificationRepository",
     "UserNotificationRepository",
+    "NotificationRepository",
 ]

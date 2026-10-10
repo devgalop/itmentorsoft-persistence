@@ -24,3 +24,26 @@ from .postgresql_user_refresh_token_model import RefreshTokenEntity
 from .postgresql_user_access_model import UserAccessEntity
 from .postgresql_user_otp_model import UserOTPEntity
 from .postgresql_notification_model import NotificationEntity
+
+__all__ = [
+    "AssessmentEntity",
+    "AssessmentAnswerEntity",
+    "AssessmentQuizEntity",
+    "AssessmentQualificationEntity",
+    "ClassificationResultEntity",
+    "TopicResultEntity",
+    "ContentRating",
+    "QuestionEntity",
+    "QuestionRubricScoreEntity",
+    "QuestionReviewEntity",
+    "ResourceContentEntity",
+    "UserEntity",
+    "RoleEntity",
+    "RecoveryTokenEntity",
+    "LearningPathEntity",
+    "LearningPathContentEntity",
+    "RefreshTokenEntity",
+    "UserAccessEntity",
+    "UserOTPEntity",
+    "NotificationEntity",
+]
