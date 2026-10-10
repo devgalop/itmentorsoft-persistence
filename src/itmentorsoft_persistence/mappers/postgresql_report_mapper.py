@@ -13,11 +13,9 @@ class PostgresReportMapper:
     def from_classification_result_to_student_basic_summary(
         request: ClassificationResultEntity,
     ) -> StudentBasicSummary:
-        student_name = request.user.username if request.user else "Unknown"
-
         return StudentBasicSummary(
             student_id=request.user_id,
-            student_name=student_name,
+            student_name=request.user.name if request.user else "Unknown",
             knowledge_classification=request.classification,
         )
 
