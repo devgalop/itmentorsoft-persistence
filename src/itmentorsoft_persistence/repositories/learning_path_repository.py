@@ -4,6 +4,7 @@ from itmentorsoft_persistence.dto.learning_path import (
     LearningPath,
     LearningPathProgressResponse,
     LearningPathResponse,
+    PaginatedLearningPathProgressResponse,
 )
 
 
@@ -95,5 +96,21 @@ class LearningPathRepository(ABC):
 
         Returns:
             bool: True if the learning path is associated with the user, False otherwise
+        """
+        pass
+
+    @abstractmethod
+    async def get_complete_learning_path(
+        self, user_id: str, page: int, page_size: int
+    ) -> PaginatedLearningPathProgressResponse:
+        """Get the complete learning path progress for a user
+
+        Args:
+            user_id (str): The ID of the user whose complete learning path progress is to be retrieved
+            page (int): The page number of the paginated response
+            page_size (int): The number of items per page in the paginated response
+
+        Returns:
+            PaginatedLearningPathProgressResponse: A paginated response containing the learning path progress for the user
         """
         pass

@@ -28,6 +28,7 @@ from .learning_path import (
     LearningPathProgress,
     LearningPathProgressResponse,
     LearningPathResponse,
+    PaginatedLearningPathProgressResponse,
 )
 from .qualifier_result import QualifierResult, TopicResult
 from .question import (
@@ -99,6 +100,7 @@ __all__ = [
     "LearningPathProgress",
     "LearningPathProgressResponse",
     "LearningPathResponse",
+    "PaginatedLearningPathProgressResponse",
     # qualifier_result
     "QualifierResult",
     "TopicResult",
