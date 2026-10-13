@@ -1,9 +1,17 @@
 class ContentByTopic:
-    def __init__(self, content_id: str, title: str, description: str, rating: float):
+    def __init__(
+        self,
+        content_id: str,
+        title: str,
+        description: str,
+        rating: float,
+        is_completed: bool = False,
+    ):
         self.content_id = content_id
         self.title = title
         self.description = description
         self.rating = rating
+        self.is_completed = is_completed
 
 
 class LearningPath:
@@ -51,3 +59,17 @@ class LearningPathProgressResponse:
         self.is_success = is_success
         self.message = message
         self.path_progress = path_progress
+
+
+class PaginatedLearningPathProgressResponse:
+    def __init__(
+        self,
+        is_success: bool,
+        message: str,
+        path_progress_list: list[LearningPath],
+        total: int,
+    ):
+        self.is_success = is_success
+        self.message = message
+        self.path_progress_list = path_progress_list
+        self.total = total
