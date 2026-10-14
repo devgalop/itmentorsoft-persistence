@@ -19,6 +19,7 @@ class NotificationMapper:
             read=False,
             created_at=datetime.now(),
             updated_at=datetime.now(),
+            url=notification.url,
         )
 
     @staticmethod
@@ -31,4 +32,5 @@ class NotificationMapper:
             read=entity.read,
             created_at=entity.created_at,
             updated_at=entity.updated_at,
+            url=entity.url,
         )
