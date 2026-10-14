@@ -19,3 +19,4 @@ class NotificationEntity(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime, server_default=func.now(), onupdate=func.now()
     )
+    url: Mapped[str] = mapped_column(String, nullable=True)
