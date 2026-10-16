@@ -1,7 +1,7 @@
 ﻿from datetime import datetime
 from typing import List
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import DateTime, ForeignKey, Integer, String, UniqueConstraint
+from sqlalchemy import DateTime, Float, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.sql import func
 from itmentorsoft_persistence.models.postgresql_question_model import (
     QuestionEntity,
@@ -162,7 +162,7 @@ class TopicResultEntity(Base):
         String, ForeignKey(CROSSFIELD_USER_ID), index=True
     )
     topic: Mapped[str] = mapped_column(String, index=True)
-    score: Mapped[int] = mapped_column(Integer)
+    score: Mapped[float] = mapped_column(Float)
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         DateTime,

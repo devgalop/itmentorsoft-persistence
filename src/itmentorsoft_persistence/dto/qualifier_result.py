@@ -27,7 +27,7 @@ class QualifierResult:
 
 
 class TopicResult:
-    def __init__(self, user_id: str, topic: str, score: int):
+    def __init__(self, user_id: str, topic: str, score: float):
         self.user_id = user_id
         self.topic = topic
         self.score = score
