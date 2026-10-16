@@ -1,17 +1,19 @@
 from pydantic import BaseModel
 
+MAX_DEGREE = 5
+
 
 class StudentKnowledgeProfile(BaseModel):
     topic: str
-    score: int
+    score: float
 
     def get_percentage_score(self) -> float:
         """Calculate the percentage score based on the score value.
 
         Returns:
-            float: The percentage score, calculated as (score / 3) * 100.
+            float: The percentage score, calculated as (score / MAX_DEGREE) * 100.
         """
-        return (self.score / 3) * 100
+        return (self.score / MAX_DEGREE) * 100
 
 
 class StudentSummary(BaseModel):
@@ -36,16 +38,16 @@ class PaginatedStudentSummary(BaseModel):
 
 class HistoricalResult(BaseModel):
     topic: str
-    score: int
+    score: float
     index: int
 
     def get_percentage_score(self) -> float:
         """Calculate the percentage score based on the score value.
 
         Returns:
-            float: The percentage score, calculated as (score / 3) * 100.
+            float: The percentage score, calculated as (score / MAX_DEGREE) * 100.
         """
-        return (self.score / 3) * 100
+        return (self.score / MAX_DEGREE) * 100
 
 
 class StudentProgressDetail(BaseModel):
